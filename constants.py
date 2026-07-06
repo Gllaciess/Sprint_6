@@ -12,7 +12,8 @@ class Data:
         "phone": "+79001234567",
         "delivery_date": "05.12.2025",
         "rental_period": "сутки",
-        "color": "чёрный жемчуг"
+        "color": "чёрный жемчуг",
+        "comment": "Позвоните за час"
     }
 
     ORDER_DATA_2 = {
@@ -23,7 +24,8 @@ class Data:
         "phone": "+79109876543",
         "delivery_date": "10.12.2025",
         "rental_period": "двое суток",
-        "color": "серая безысходность"
+        "color": "серая безысходность",
+        "comment": "Домофон не работает"
     }
 
 
