@@ -2,6 +2,7 @@ import allure
 import pytest
 from selenium.webdriver.common.by import By
 from pages.main_page import MainPage
+from constants import Urls
 
 
 @allure.feature('Вопросы о важном')
@@ -24,7 +25,7 @@ class TestQuestions:
     )
     def test_question_text(self, driver, question_number, expected_text):
         main_page = MainPage(driver)
-        driver.get("https://qa-scooter.praktikum-services.ru/")
+        driver.get(Urls.BASE_URL)
         main_page.accept_cookies()
 
         question_locator = (By.ID, f"accordion__heading-{question_number}")
