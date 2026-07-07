@@ -24,4 +24,8 @@ class BasePage:
     def get_text(self, locator):
         return self.find_element(locator).text
     
+    def click_with_js(self, locator):
+        element = self.wait.until(EC.element_to_be_clickable(locator))
+        self.driver.execute_script("arguments[0].click();", element)
+
 

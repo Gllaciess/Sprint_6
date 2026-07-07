@@ -64,8 +64,7 @@ class OrderPage(BasePage):
             self.send_keys(self.COMMENT_INPUT, comment)
 
         self.click_element(self.ORDER_BUTTON)
-        yes_button = self.wait.until(EC.element_to_be_clickable(self.YES_BUTTON))
-        self.driver.execute_script("arguments[0].click();", yes_button)
+        self.click_with_js(self.YES_BUTTON)
 
     def get_success_message(self):
         return self.get_text(self.SUCCESS_MESSAGE)
