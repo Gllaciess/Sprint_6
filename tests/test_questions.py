@@ -5,7 +5,7 @@ from pages.main_page import MainPage
 from constants import Urls
 
 
-@allure.feature('Вопросы о важном')
+@allure.feature('Вопросы')
 class TestQuestions:
 
     @allure.title('Проверка ответов')

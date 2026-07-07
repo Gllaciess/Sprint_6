@@ -1,56 +1,46 @@
 import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+from locators.locators import MainPageLocators
 
 
 class MainPage(BasePage):
-    # Локаторы
-    COOKIE_BUTTON = (By.ID, "rcc-confirm-button")
-    ORDER_TOP_BUTTON = (By.XPATH, "//button[@class='Button_Button__ra12g' and text()='Заказать']")
-    ORDER_BOTTOM_BUTTON = (By.XPATH, "//button[@class='Button_Button__ra12g' and text()='Заказать'][1]")
-    LOGO_SCOOTER = (By.XPATH, "//img[@alt='Scooter']")
-    LOGO_YANDEX = (By.XPATH, "//img[@alt='Yandex']")
-
-    # Вопросы
-    
-    def get_question_locator(self, question_number):
-        return (By.ID, f"accordion__heading-{question_number}")
-
-    def get_answer_locator(self, question_number):
-        return (By.ID, f"accordion__panel-{question_number}")
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.locators = MainPageLocators
 
     # Методы
     
     @allure.step("Принять куки")
     def accept_cookies(self):
-        self.click_element(self.COOKIE_BUTTON)
+        self.click_element(self.locators.COOKIE_BUTTON)
 
     @allure.step("Нажать кнопку 'Заказать'")
     def click_order_top(self):
-        self.click_element(self.ORDER_TOP_BUTTON)
+        self.click_element(self.locators.ORDER_TOP_BUTTON)
 
     @allure.step("Нажать кнопку 'Заказать'")
     def click_order_bottom(self):
-        self.click_element(self.ORDER_BOTTOM_BUTTON)
+        self.click_element(self.locators.ORDER_BOTTOM_BUTTON)
 
     @allure.step("Нажать на логотип 'Самокат'")
     def click_logo_scooter(self):
-        self.click_element(self.LOGO_SCOOTER)
+        self.click_element(self.locators.LOGO_SCOOTER)
 
     @allure.step("Нажать на логотип 'Яндекс'")
     def click_logo_yandex(self):
-        self.click_element(self.LOGO_YANDEX)
+        self.click_element(self.locators.LOGO_YANDEX)
 
-    # === МЕТОД ДЛЯ РАБОТЫ С ВОПРОСАМИ ===
+    # Методы для вопросов
 
     @allure.step("Кликнуть на вопрос")
     def click_question(self, question_number):
-        locator = self.get_question_locator(question_number)
+        locator = (By.ID, f"accordion__heading-{question_number}")
         self.click_element(locator)
 
     @allure.step("Получить текст ответа на вопрос")
     def get_answer_text(self, question_number):
-        locator = self.get_answer_locator(question_number)
+        locator = (By.ID, f"accordion__panel-{question_number}")
         return self.get_text(locator)
     
 
