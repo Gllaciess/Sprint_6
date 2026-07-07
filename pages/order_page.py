@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -27,6 +28,7 @@ class OrderPage(BasePage):
     SUCCESS_MESSAGE = (By.XPATH, "//div[contains(@class, 'Order_ModalHeader')]")
     FORM_HEADER = (By.XPATH, "//div[contains(@class, 'Order_Header')]")
 
+    @allure.step("Заполнить первую форму заказа")
     def fill_order_form_1(self, name, surname, address, metro, phone):
         self.send_keys(self.NAME_INPUT, name)
         self.send_keys(self.SURNAME_INPUT, surname)
@@ -43,6 +45,7 @@ class OrderPage(BasePage):
         self.send_keys(self.PHONE_INPUT, phone)
         self.click_element(self.NEXT_BUTTON)
 
+    @allure.step("Заполнить вторую форму заказа")
     def fill_order_form_2(self, delivery_date, rental_period, color, comment=None):
 
         self.send_keys(self.DELIVERY_DATE, delivery_date)
@@ -66,6 +69,7 @@ class OrderPage(BasePage):
         self.click_element(self.ORDER_BUTTON)
         self.click_with_js(self.YES_BUTTON)
 
+    @allure.step("Получить сообщение об успешном заказе")
     def get_success_message(self):
         return self.get_text(self.SUCCESS_MESSAGE)
     
