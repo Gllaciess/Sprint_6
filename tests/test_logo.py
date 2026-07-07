@@ -34,10 +34,7 @@ class TestLogo:
             EC.number_of_windows_to_be(2)
         )
 
-        for window_handle in driver.window_handles:
-            if window_handle != main_window:
-                driver.switch_to.window(window_handle)
-                break
+        driver.switch_to.window(driver.window_handles[1])
 
         WebDriverWait(driver, 15).until(
             EC.url_contains("dzen")
