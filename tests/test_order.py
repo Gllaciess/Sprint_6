@@ -8,6 +8,7 @@ from constants import Urls, Data
 @allure.feature('Заказ самоката')
 class TestOrder:
 
+    @allure.title('Позитивный сценарий заказа самоката')
     @allure.story('Позитивный сценарий заказа')
     @pytest.mark.parametrize(
         'order_data, button_type',

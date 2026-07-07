@@ -8,7 +8,8 @@ from constants import Urls
 @allure.feature('Логотипы')
 class TestLogo:
 
-    @allure.story('Переход на главную по логотипу "Самокат"')
+    @allure.title('Переход на главную по логотипу "Самокат"')
+    @allure.story('Переход на главную по логотипу')
     def test_click_logo_scooter_go_to_main(self, driver):
         main_page = MainPage(driver)
         driver.get(Urls.BASE_URL)
@@ -18,6 +19,7 @@ class TestLogo:
 
         assert driver.current_url == Urls.BASE_URL
 
+    @allure.title('Клик на логотип "Яндекс"')
     @allure.story('Переход в Дзен по логотипу "Яндекс"')
     def test_click_logo_yandex_go_to_dzen(self, driver):
         main_page = MainPage(driver)

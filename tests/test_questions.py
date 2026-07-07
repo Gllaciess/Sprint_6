@@ -7,6 +7,7 @@ from pages.main_page import MainPage
 @allure.feature('Вопросы о важном')
 class TestQuestions:
 
+    @allure.title('Проверка ответов')
     @allure.story('Проверка текста ответов')
     @pytest.mark.parametrize(
         'question_number, expected_text',
