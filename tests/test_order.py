@@ -1,6 +1,5 @@
 import allure
 import pytest
-from pages.main_page import MainPage
 from pages.order_page import OrderPage
 from constants import Urls, Data
 
@@ -17,12 +16,8 @@ class TestOrder:
             (Data.ORDER_DATA_2, 'bottom')
         ]
     )
-    def test_order_successful(self, driver, order_data, button_type):
-        main_page = MainPage(driver)
-        order_page = OrderPage(driver)
-
-        driver.get(Urls.BASE_URL)
-        main_page.accept_cookies()
+    def test_order_successful(self, main_page, order_data, button_type):
+        order_page = OrderPage(main_page.driver)
 
         if button_type == 'top':
             main_page.click_order_top()

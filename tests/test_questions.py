@@ -23,11 +23,7 @@ class TestQuestions:
             (7, "Да, обязательно. Всем самокатов! И Москве, и Московской области.")
         ]
     )
-    def test_question_text(self, driver, question_number, expected_text):
-        main_page = MainPage(driver)
-        driver.get(Urls.BASE_URL)
-        main_page.accept_cookies()
-
+    def test_question_text(self, main_page, question_number, expected_text):
         main_page.click_question(question_number)
         answer_text = main_page.get_answer_text(question_number)
 

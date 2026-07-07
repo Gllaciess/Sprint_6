@@ -14,6 +14,7 @@ class OrderPage(BasePage):
 
     @allure.step("Заполнить первую форму заказа")
     def fill_order_form_1(self, name, surname, address, metro, phone):
+        self.wait.until(EC.visibility_of_element_located(self.locators.NAME_INPUT))
         self.send_keys(self.locators.NAME_INPUT, name)
         self.send_keys(self.locators.SURNAME_INPUT, surname)
         self.send_keys(self.locators.ADDRESS_INPUT, address)
@@ -55,4 +56,5 @@ class OrderPage(BasePage):
     @allure.step("Получить сообщение об успешном заказе")
     def get_success_message(self):
         return self.get_text(self.locators.SUCCESS_MESSAGE)    
+
 
