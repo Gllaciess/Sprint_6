@@ -28,11 +28,8 @@ class TestQuestions:
         driver.get(Urls.BASE_URL)
         main_page.accept_cookies()
 
-        question_locator = (By.ID, f"accordion__heading-{question_number}")
-        answer_locator = (By.ID, f"accordion__panel-{question_number}")
-
-        driver.find_element(*question_locator).click()
-        answer_text = driver.find_element(*answer_locator).text
+        main_page.click_question(question_number)
+        answer_text = main_page.get_answer_text(question_number)
 
         assert answer_text == expected_text
 
