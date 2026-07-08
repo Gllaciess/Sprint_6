@@ -34,4 +34,25 @@ class BasePage:
         element = self.wait.until(EC.element_to_be_clickable(locator))
         self.driver.execute_script("arguments[0].click();", element)
 
+    @allure.step("Получить текущий URL")
+    def get_current_url(self):
+        return self.driver.current_url
 
+    @allure.step("Получить текущее окно")
+    def get_current_window_handle(self):
+        return self.driver.current_window_handle
+
+    @allure.step("Ожидать количество окон")
+    def wait_for_windows(self, count):
+        WebDriverWait(self.driver, 10).until(
+            EC.number_of_windows_to_be(count)
+        )
+
+    @allure.step("Ожидать URL содержит текст")
+    def wait_for_url_contains(self, text):
+        WebDriverWait(self.driver, 15).until(
+            EC.url_contains(text)
+        )
+
+
+        

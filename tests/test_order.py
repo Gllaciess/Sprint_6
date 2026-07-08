@@ -19,10 +19,7 @@ class TestOrder:
     def test_order_successful(self, main_page, order_data, button_type):
         order_page = OrderPage(main_page.driver)
 
-        if button_type == 'top':
-            main_page.click_order_top()
-        else:
-            main_page.click_order_bottom()
+        main_page.click_order(button_type)
 
         order_page.fill_order_form_1(
             order_data["name"],

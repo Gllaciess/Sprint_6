@@ -31,6 +31,20 @@ class MainPage(BasePage):
     def click_logo_yandex(self):
         self.click_element(self.locators.LOGO_YANDEX)
 
+    @allure.step("Нажать кнопку 'Заказать'")
+    def click_order(self, button_type):
+        if button_type == 'top':
+            self.click_element(self.locators.ORDER_TOP_BUTTON)
+        else:
+            self.click_element(self.locators.ORDER_BOTTOM_BUTTON)
+
+    @allure.step("Переключиться на новую вкладку")
+    def switch_to_new_window(self, main_window):
+        for window_handle in self.driver.window_handles:
+            if window_handle != main_window:
+                self.driver.switch_to.window(window_handle)
+                break
+
     # Методы для вопросов
 
     @allure.step("Кликнуть на вопрос")
@@ -43,4 +57,5 @@ class MainPage(BasePage):
         locator = (By.ID, f"accordion__panel-{question_number}")
         return self.get_text(locator)
     
+
 
